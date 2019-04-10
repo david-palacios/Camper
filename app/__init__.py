@@ -8,6 +8,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', data = "data here")
 
+@app.route('/home/map')
+def getmap():
+    return render_template('testGoogleAPI.html')
 
 @app.route('/getdata', methods=['GET'])
 def getdata():

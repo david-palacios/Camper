@@ -10,7 +10,8 @@ def index():
 
 @app.route('/home/map')
 def getmap():
-    return render_template('testGoogleAPI.html')
+    apikey = "AIzaSyB31C7CeNH_CyGtLBaKz7SlWLmgkLvB7kE"
+    return render_template('testGoogleAPI.html', key=apikey)
 
 @app.route('/getdata', methods=['GET'])
 def getdata():

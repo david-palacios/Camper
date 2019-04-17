@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
-from simplecrypt import encrypt, decrypt
+# from simplecrypt import encrypt, decrypt
 
 app = Flask(__name__)
 
 @app.route('/home')
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html', data = "data here")
+    return render_template('home.html')
 
 
 @app.route('/home/map')

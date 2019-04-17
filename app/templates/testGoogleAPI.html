@@ -4,6 +4,10 @@
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <script type='text/javascript' src="{{url_for('static', filename='jQuery-3.3.1.min.js')}}"></script>
+    <script type='text/javascript' src="{{url_for('static', filename='content.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"
+    async defer></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -20,9 +24,6 @@
   </head>
   <body>
     <div id="map"></div>
-	<script type='text/javascript' src="{{url_for('static', filename='jQuery-3.3.1.min.js')}}"></script>
-    <script type='text/javascript' src="{{url_for('static', filename='content.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"
-    async defer></script>
+
   </body>
 </html>

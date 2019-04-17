@@ -5,16 +5,21 @@ function initMap() {
 	var lng_sw= -70.6307728589731
 	var lat_ne = 45.73738294592985
 	var lng_ne = -66.51340783041827
-	
-	map = new google.maps.Map(document.getElementById('map'), {
+
+    debugger;
+
+	map = new google.maps.Map(document.getElementById('mapframe'), {
 	  center: {lat: (lat_ne + lat_sw)/2, lng: (lng_sw + lng_ne)/2},
+	  //center: {lat: 41, lng: -87 }
 	  zoom: 8
 	});
+
+	debugger;
 	
 	cpe = {lat: (lat_ne + lat_sw)/2, lng: (lng_sw + lng_ne)/2};
-	
+
 	pl = cpe;
-	
+
 	var marker = new google.maps.Marker({
 		id: "positionmarker",
 		position: cpe,
@@ -32,6 +37,8 @@ function initMap() {
 		console.log("lat: " + lat);
 		console.log("long: " + lng);
 	});
+
+	debugger;
 }
 
 

@@ -37,4 +37,5 @@ def postform():
 
 @app.route('/find')
 def find():
-    return render_template('find.html')
+    return render_template('find.html', key="AIzaSyB31C7CeNH_CyGtLBaKz7SlWLmgkLvB7kE")
+

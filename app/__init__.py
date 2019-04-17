@@ -34,3 +34,7 @@ def getdata2(num):
 @app.route('/postform')
 def postform():
     return render_template('postForm.html')
+
+@app.route('/find')
+def find():
+    return render_template('find.html')

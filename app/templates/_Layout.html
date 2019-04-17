@@ -4,8 +4,10 @@
 <nav>
   <h1>Flaskr</h1>
   <ul>
-    <li><span>Home</span></li>
-    <li><span>Discover</span></li>
+    <li><a href="{{ url_for('home')}}">Home</a></li>
+    <li>Discover</li>
+    <li><a href="{{ url_for('find')}}">Find</a></li>
+    <li>Login</li>
   </ul>
 </nav>
 <section class="content">

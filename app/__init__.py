@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
+from simplecrypt import encrypt, decrypt
 
 app = Flask(__name__)
-
 
 @app.route('/home')
 @app.route('/', methods=['GET'])
@@ -20,14 +20,12 @@ def getdata():
     else:
         return "404"
 
-
 @app.route('/getdata/<num>', methods=['GET'])
 def getdata2(num):
     if request.method == 'GET':
         return render_template('getData.html', data=num)
     else:
         return "404"
-
 
 @app.route('/postform')
 def postform():

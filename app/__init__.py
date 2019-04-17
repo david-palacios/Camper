@@ -8,10 +8,12 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', data = "data here")
 
+
 @app.route('/home/map')
 def getmap():
     apikey = "AIzaSyB31C7CeNH_CyGtLBaKz7SlWLmgkLvB7kE"
     return render_template('testGoogleAPI.html', key=apikey)
+
 
 @app.route('/getdata', methods=['GET'])
 def getdata():
@@ -20,12 +22,14 @@ def getdata():
     else:
         return "404"
 
+
 @app.route('/getdata/<num>', methods=['GET'])
 def getdata2(num):
     if request.method == 'GET':
         return render_template('getData.html', data=num)
     else:
         return "404"
+
 
 @app.route('/postform')
 def postform():

@@ -4,15 +4,20 @@ import os
 from Crypto.Cipher import XOR
 import base64
 
+app = Flask(__name__)
+
+#app.config['SERVER_NAME'] = 'TreeLine'
+
+
 def encrypt(key, plaintext):
-  cipher = XOR.new(key)
-  return base64.b64encode(cipher.encrypt(plaintext))
+    cipher = XOR.new(key)
+    return base64.b64encode(cipher.encrypt(plaintext))
+
 
 def decrypt(key, ciphertext):
-  cipher = XOR.new(key)
-  return cipher.decrypt(base64.b64decode(ciphertext))
+    cipher = XOR.new(key)
+    return cipher.decrypt(base64.b64decode(ciphertext))
 
-app = Flask(__name__)
 
 @app.route('/home')
 @app.route('/', methods=['GET'])
@@ -46,6 +51,7 @@ def getdata2(num):
 def postform():
     return render_template('postForm.html')
 
+
 @app.route('/find')
 def find():
     curr_dir = os.path.dirname(os.path.realpath(__file__))
@@ -55,7 +61,7 @@ def find():
     # write = open(curr_dir+"/res/encrypted.txt", "wb")
     # write.write(encripted)
     # write.close()
-    
+
     apikey = decrypt(key, open(curr_dir + "/res/encrypted.txt", "rb").read()).decode("utf-8")
 
     return render_template('find.html', key=apikey)

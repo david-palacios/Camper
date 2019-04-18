@@ -5,6 +5,7 @@
   <script type='text/javascript' src="{{url_for('static', filename='jQuery-3.3.1.min.js')}}"></script>
   <script type='text/javascript' src="{{url_for('static', filename='content.js')}}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap" async defer></script>
+<script> console.log("{{key}}")</script>
 {% endblock %}
 
 {% block content %}

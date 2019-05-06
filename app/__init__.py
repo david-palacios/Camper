@@ -55,12 +55,8 @@ def postform():
 @app.route('/find')
 def find():
     curr_dir = os.path.dirname(os.path.realpath(__file__))
+    
     key = open(curr_dir + "/res/key.txt").read()
-
-    # encripted = encrypt(open(curr_dir+"/res/key.txt").read(), "AIzaSyB31C7CeNH_CyGtLBaKz7SlWLmgkLvB7kE")
-    # write = open(curr_dir+"/res/encrypted.txt", "wb")
-    # write.write(encripted)
-    # write.close()
 
     apikey = decrypt(key, open(curr_dir + "/res/encrypted.txt", "rb").read()).decode("utf-8")
 

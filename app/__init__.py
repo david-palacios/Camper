@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 import os
 
-from Crypto.Cipher import XOR
+# from Crypto.Cipher import XOR
+from cryptography.fernet import Fernet
 import base64
 
 app = Flask(__name__)
@@ -10,14 +11,13 @@ app = Flask(__name__)
 
 
 def encrypt(key, plaintext):
-    cipher = XOR.new(key)
-    return base64.b64encode(cipher.encrypt(plaintext))
+    # cipher = XOR.new(key)
+    return base64.b64encode(Fernet(key).encrypt(plaintext))
 
 
 def decrypt(key, ciphertext):
-    cipher = XOR.new(key)
-    return cipher.decrypt(base64.b64decode(ciphertext))
-
+    # cipher = XOR.new(key)
+    return Fernet(key).decrypt(base64.b64decode(ciphertext))
 
 @app.route('/home')
 @app.route('/', methods=['GET'])
@@ -55,8 +55,17 @@ def postform():
 @app.route('/find')
 def find():
     curr_dir = os.path.dirname(os.path.realpath(__file__))
+
+
+    # SAVE API KEY IN API.TXT FILE, THEN RUN LINES BELOW TO ENCRYPT IT
+
+    #encripted = encrypt(open(curr_dir+"/res/key.txt", 'rb').read(), open(curr_dir+"/res/api.txt", "rb").read())
+    #write = open(curr_dir+"/res/encrypted.txt", "wb")
+    #write.write(encripted)
+    #write.close()
+
     
-    key = open(curr_dir + "/res/key.txt").read()
+    key = open(curr_dir + "/res/key.txt", "rb").read()
 
     apikey = decrypt(key, open(curr_dir + "/res/encrypted.txt", "rb").read()).decode("utf-8")
 
